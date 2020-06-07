@@ -1,5 +1,6 @@
 package com.littlebits;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringConverterTests {
     private StringConverter converter = new StringConverter();
@@ -46,7 +48,29 @@ public class StringConverterTests {
         assertEquals(expectedResult, actualResult);
     }
 
-//    UTF8 + ASCII  playing with special characters from different countries
-//    when one String is null?  not to concatenate? or throw an exception?
+    @Test
+    public void shouldConvertListOfSpecialCharStringsToSingleString() {
+        list = List.of("ਬੀਟਲ", "على", "źdble", "сярод", "pcheł", "!");
+        final String expectedResult = "ਬੀਟਲعلىźdbleсяродpcheł!";
+        String actualResult = converter.convertListToSingleString(list);
 
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Test checks if null value is ignored when some elements in the list are null")
+    public void shouldIgnoreNullWhenConvertingToString() {
+        String[] elements = {null, "Mary", "had", null, "little", null, "."};
+        final String expectedResult = "Maryhadlittle.";
+        String actualResult = converter.convertListToSingleString(Arrays.asList(elements));
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("When null is passed IllegalArgumentException exception should be thrown")
+    public void shouldThrowIllegalArgumentExceptionWhenListIsNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class, ()-> converter.convertListToSingleString(null));
+        assertEquals("The List cannot be null", exception.getMessage());
+    }
 }
