@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class StringConverterTests {
+public class StringConverterTest {
     private final StringConverter converter = new StringConverter();
     private static final String EMPTY = "";
 

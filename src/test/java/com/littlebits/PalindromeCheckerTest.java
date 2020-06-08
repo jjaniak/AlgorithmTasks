@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PalindromeCheckerTests {
+public class PalindromeCheckerTest {
     private final PalindromeChecker checker = new PalindromeChecker();
 
     @Nested
