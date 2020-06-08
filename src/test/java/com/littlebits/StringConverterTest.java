@@ -44,9 +44,9 @@ public class StringConverterTest {
     @Test
     @DisplayName("List of Strings containing special characters should be correctly converted to a single String")
     public void shouldConvertListOfSpecialCharStringsToSingleString() {
-        List<String> list = List.of("ਬੀਟਲ", "على", "źdble", "сярод", "pcheł", "!"); // todo: List.of or Arrays.asList
+        String[] elements = {"ਬੀਟਲ", "على", "źdble", "сярод", "pcheł", "!"};
         final String expectedResult = "ਬੀਟਲعلىźdbleсяродpcheł!";
-        String actualResult = converter.convertListToSingleString(list);
+        String actualResult = converter.convertListToSingleString(Arrays.asList(elements));
 
         assertEquals(expectedResult, actualResult);
     }
