@@ -15,10 +15,10 @@ public class PalindromeCheckerTest {
     @ParameterizedTest
     @DisplayName("Method isPalindrome() should return true given following words/sentences that are palindromes:")
     @CsvSource({
-            "kayak",        // odd number of characters
-            "0123443210",   // even number of characters
-            "Madam",        // contains a capital letter
-            "łamał",        // contains special characters
+            "kayak",            // odd number of characters
+            "0123443210",       // even number of characters
+            "Madam",            // contains a capital letter
+            "łamał",            // contains special characters
             "我爱妈妈，妈妈爱我",  // sentence-length palindrome in Chinese
             "Doc... note: I dissent! A fast never prevents a fatness. I diet on cod?"   // sentence containing spaces and punctuation
     })
@@ -80,8 +80,8 @@ public class PalindromeCheckerTest {
         }
 
         @Test
-        @DisplayName("given words containing similar letters (eg. \"e\" and \"è\" should assert false")
-        // In terms of palindrome it was chosen to not consider "é" and "e" the same character
+        @DisplayName("given words containing similar letters (eg. \"e\" and \"è\" should assert false)")
+        // In terms of palindrome, it was chosen to not consider "é" and "e" the same character
         public void twoSimilarCharactersShouldNotBeEquivalent() {
             String input = "È corta e non è sadica e non è acida se non è atroce";
             assertFalse(checker.isPalindrome(input));

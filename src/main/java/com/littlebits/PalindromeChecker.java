@@ -1,6 +1,7 @@
 package com.littlebits;
 
 public class PalindromeChecker {
+
     public boolean isPalindrome(String input) {
         if (input == null) {
             return false;
