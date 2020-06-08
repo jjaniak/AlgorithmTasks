@@ -3,8 +3,6 @@ package com.littlebits;
 import java.util.List;
 
 public class StringConverter {
-    private String result = "";
-//    private StringBuilder builder = new StringBuilder();
 
     /**
      * converts a list of Strings to a new single String.
@@ -17,6 +15,9 @@ public class StringConverter {
      * @return a new concatenated String that includes all elements from the list
      */
     public String convertListToSingleString(List<String> elements) {
+        StringBuilder builder = new StringBuilder();
+        String result = "";
+
         if (elements == null) {
             throw new IllegalArgumentException("The List cannot be null");
         }
@@ -24,8 +25,7 @@ public class StringConverter {
             if (element == null) {
                 continue;
             }
-//            result = builder.append(element).toString();  // todo choose between StringBuilder, String.concat or + operator
-            result = result.concat(element);    // or result += list.get(i);
+            result = builder.append(element).toString();
         }
         return result;
     }
