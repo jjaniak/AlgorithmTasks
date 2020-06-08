@@ -2,7 +2,7 @@ package com.littlebits;
 
 public class SumChecker {
 
-    public static boolean isThereSumWhenAddingTwoNumbers(int x, int[] numbers) {
+    public static boolean isThereSumWhenAddingTwoNumbersFromList(int x, int[] numbers) {
         if (numbers == null || numbers.length < 2) {
             return false;
         }

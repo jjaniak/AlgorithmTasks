@@ -15,7 +15,7 @@ public class SumCheckerTest {
         int x = 7;
         int[] numbers = {3, 4};
 
-        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -23,7 +23,7 @@ public class SumCheckerTest {
         int x = 0;
         int[] numbers = {593, -593};
 
-        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class SumCheckerTest {
         int x = 2020;
         int[] numbers = {0, -2020, 15, 5, 2000, 2015};
 
-        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class SumCheckerTest {
         int x = -19;
         int[] numbers = {-12, 7, -38, 0, 1, 5, 18, -19};
 
-        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class SumCheckerTest {
         int x = 997;
         int[] numbers = {2147483647, 1, 900, 97};      // checks if overflow does not break the test
 
-        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertTrue(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     // should not find the sum
@@ -56,7 +56,7 @@ public class SumCheckerTest {
         int x = -37;
         int[] numbers = null;
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));  //todo why @Contract annotation?
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));  //todo why @Contract annotation?
     }
 
     @Test
@@ -64,7 +64,7 @@ public class SumCheckerTest {
         int x = 0;
         int[] numbers = {};
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -72,7 +72,7 @@ public class SumCheckerTest {
         int x = 42;
         int[] numbers = {42};
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class SumCheckerTest {
         int x = 0;
         int[] numbers = {12, -8};
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -88,7 +88,7 @@ public class SumCheckerTest {
         int x = 2012;
         int[] numbers = {2012, -1, 1};
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class SumCheckerTest {
         int x = -77;
         int[] numbers = {-7, 7, -7};
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -104,7 +104,7 @@ public class SumCheckerTest {
         int x = 264;
         int[] numbers = {6, 4, 2, 200, 60};
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
@@ -114,6 +114,6 @@ public class SumCheckerTest {
         int x = 2147483647;
         int[] numbers = {-2147483648, -1, 0};
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbers(x, numbers));
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 }
