@@ -3,6 +3,8 @@ package com.littlebits;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,91 +12,31 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PalindromeCheckerTest {
     private final PalindromeChecker checker = new PalindromeChecker();
 
-    @Nested
-    @DisplayName("Method isPalindrome() should return true")
-    public class ActualPalindromeTests {
-        private final String palindrome1 = "kayak";
-        private final String palindrome2 = "0123443210";
-        private final String palindrome3 = "Madam";
-        private final String palindrome4 = "łamał";
-        private final String palindrome5 = "Doc, note: I dissent! A fast never prevents a fatness. I diet on cod?";
-        private final String palindrome6 = "我爱妈妈，妈妈爱我";
-
-        @Test
-        @DisplayName("given a palindrome with odd number of characters")
-        public void givenOddPalindromeShouldReturnTrue() {
-            assertTrue(checker.isPalindrome(palindrome1));
-        }
-
-        @Test
-        @DisplayName("given a palindrome with even number of characters")
-        public void givenEvenPalindromeShouldReturnTrue() {
-            assertTrue(checker.isPalindrome(palindrome2));
-        }
-
-        @Test
-        @DisplayName("given a palindrome containing a capital letter")
-        public void givenPalindromeWithCapitalLetterShouldReturnTrue() {
-            assertTrue(checker.isPalindrome(palindrome3));
-        }
-
-        @Test
-        @DisplayName("given a palindrome containing special characters")
-        public void givenPalindromeWithSpecialCharShouldReturnTrue() {
-            assertTrue(checker.isPalindrome(palindrome4));
-        }
-
-        @Test
-        @DisplayName("given a sentence-length palindrome containing spaces and punctuation")
-        public void givenSentencePalindromeWithSpacesAndPunctuationShouldReturnTrue() {
-            assertTrue(checker.isPalindrome(palindrome5));
-        }
-
-        @Test
-        @DisplayName("given a sentence-length palindrome in Chinese")
-        public void givenSentenceLengthPalindromeInChineseShouldReturnTrue() {
-            assertTrue(checker.isPalindrome(palindrome6));
-        }
+    @ParameterizedTest
+    @DisplayName("Method isPalindrome() should return true given following words/sentences that are palindromes:")
+    @CsvSource({
+            "kayak",        // odd number of characters
+            "0123443210",   // even number of characters
+            "Madam",        // contains a capital letter
+            "łamał",        // contains special characters
+            "我爱妈妈，妈妈爱我",  // sentence-length palindrome in Chinese
+            "Doc... note: I dissent! A fast never prevents a fatness. I diet on cod?"   // sentence containing spaces and punctuation
+    })
+    public void givenPalindromesShouldReturnTrue(String input) {
+        assertTrue(checker.isPalindrome(input));
     }
 
-    @Nested
-    @DisplayName("Method isPalindrome() should return false")
-    public class NotPalindromeTests {
-        private final String notPalindrome1 = "kayaak";
-        private final String notPalindrome2 = "0123453210";
-        private final String notPalindrome3 = "Toyota";
-        private final String notPalindrome4 = "我爱妈妈妈妈爱";
-        private final String notPalindrome5 = "Go hang a salami, I am a lasagna hog!";
-
-        @Test
-        @DisplayName("given a non palindrome with odd number of characters")
-        public void givenNonPalindromeWithOddNumberofCharShouldReturnFalse() {
-            assertFalse(checker.isPalindrome(notPalindrome1));
-        }
-
-        @Test
-        @DisplayName("given a non palindrome with even number of characters")
-        public void givenNonPalindromeWithEvenNumberofCharShouldReturnFalse() {
-            assertFalse(checker.isPalindrome(notPalindrome2));
-        }
-
-        @Test
-        @DisplayName("given a non palindrome containing a capital letter")
-        public void givenNonPalindromeWithCapitalLetterShouldReturnFalse() {
-            assertFalse(checker.isPalindrome(notPalindrome3));
-        }
-
-        @Test
-        @DisplayName("given a non palindrome containing special characters")
-        public void givenNonPalindromeWithSpecialCharsShouldReturnFalse() {
-            assertFalse(checker.isPalindrome(notPalindrome4));
-        }
-
-        @Test
-        @DisplayName("given a sentence (not a palindrome) containing spaces and punctuation")
-        public void givenSentenceNonPalindromeWithSpacesAndPunctuationShouldReturnFalse() {
-            assertFalse(checker.isPalindrome(notPalindrome5));
-        }
+    @ParameterizedTest
+    @DisplayName("Method isPalindrome() should return false given following words/sentences that are not palindromes:")
+    @CsvSource({
+            "kayaak",           // odd number of characters
+            "0123453210",       // even number of characters
+            "Toyota",           // contains a capital letter
+            "我爱妈妈妈妈爱",     // contains special characters
+            "Go hang a salami; I am a lasagna hog!"     // sentence containing spaces and punctuation
+    })
+    public void givenNonPalindromesShouldReturnFalse(String input) {
+        assertFalse(checker.isPalindrome(input));
     }
 
     @Nested
