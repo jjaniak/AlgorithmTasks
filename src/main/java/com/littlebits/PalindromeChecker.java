@@ -22,7 +22,8 @@ public class PalindromeChecker {
         }
 
         int length = input.length();
-        for (int i = 0; i < length /2; i++) {
+        int middle = length /2;
+        for (int i = 0; i < middle; i++) {
             if (input.charAt(i) != input.charAt(length - 1 - i)) {
                 return false;
             }
