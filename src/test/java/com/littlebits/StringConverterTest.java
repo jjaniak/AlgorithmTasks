@@ -15,6 +15,7 @@ public class StringConverterTest {
     private static final String EMPTY = "";
 
     @Test
+    @DisplayName("Empty list should be converted to an empty String")
     public void shouldConvertEmptyListToEmptyString() {
         String actualResult = converter.convertListToSingleString(new ArrayList<>());
 
@@ -22,6 +23,7 @@ public class StringConverterTest {
     }
 
     @Test
+    @DisplayName("List of empty Strings should be converted to an empty String")
     public void shouldConvertListOfEmptyElementsToEmptyString() {
         String[] elements = {"", "", "", "", ""};
         String actualResult = converter.convertListToSingleString(Arrays.asList(elements));
@@ -30,6 +32,7 @@ public class StringConverterTest {
     }
 
     @Test
+    @DisplayName("List of Strings should be correctly converted to a single String")
     public void shouldConvertListOfStringsToSingleString() {
         String[] elements = {"Mary ", "had", " a ", "little", "lamb", ".  "};
         final String expectedResult = "Mary had a littlelamb.  ";
@@ -39,6 +42,7 @@ public class StringConverterTest {
     }
 
     @Test
+    @DisplayName("List of Strings containing special characters should be correctly converted to a single String")
     public void shouldConvertListOfSpecialCharStringsToSingleString() {
         List<String> list = List.of("ਬੀਟਲ", "على", "źdble", "сярод", "pcheł", "!"); // todo: List.of or Arrays.asList
         final String expectedResult = "ਬੀਟਲعلىźdbleсяродpcheł!";
@@ -48,7 +52,7 @@ public class StringConverterTest {
     }
 
     @Test
-    @DisplayName("Test checks if null value is ignored when some elements in the list are null")
+    @DisplayName("When some elements in the list are null, then null value should be ignored ")
     public void shouldIgnoreNullWhenConvertingToString() {
         String[] elements = {null, "Mary", "had", null, "little", null, "."};
         final String expectedResult = "Maryhadlittle.";
@@ -58,7 +62,7 @@ public class StringConverterTest {
     }
 
     @Test
-    @DisplayName("When null is passed IllegalArgumentException exception should be thrown")
+    @DisplayName("When null is passed, then IllegalArgumentException exception should be thrown")
     public void shouldThrowIllegalArgumentExceptionWhenListIsNull() {
         Exception exception = assertThrows(IllegalArgumentException.class, ()-> converter.convertListToSingleString(null));
         assertEquals("The List cannot be null", exception.getMessage());
