@@ -11,7 +11,7 @@ public class SumCheckerTest {
 
     // should find the sum
     @Test
-    public void isSumTest1() {
+    public void addingTwoElementsSumTest() {
         int x = 7;
         int[] numbers = {3, 4};
 
@@ -19,7 +19,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void isSumTest2() {
+    public void addingOppositeNumbersSummingToZeroTest() {
         int x = 0;
         int[] numbers = {593, -593};
 
@@ -27,7 +27,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void isSumTest3() {
+    public void addingSumFromMultipleElementsTest() {
         int x = 2020;
         int[] numbers = {0, -2020, 15, 5, 2000, 2015};
 
@@ -35,7 +35,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void isSumTest4() {
+    public void addingSumFromMultipleElementsInvolvingZeroTest() {
         int x = -19;
         int[] numbers = {-12, 7, -38, 0, 1, 5, 18, -19};
 
@@ -43,7 +43,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void overflowShouldNotAffectFindingTheSum() {
+    public void findingTheSumEvenWithOverflowTest() {
         int x = 997;
         int[] numbers = {2147483647, 1, 900, 97};      // checks if overflow does not break the test
 
@@ -52,15 +52,15 @@ public class SumCheckerTest {
 
     // should not find the sum
     @Test
-    public void isNotSumTest1() {
+    public void arrayIsNullTest() {
         int x = -37;
         int[] numbers = null;
 
-        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));  //todo why @Contract annotation?
+        assertFalse(SumChecker.isThereSumWhenAddingTwoNumbersFromList(x, numbers));
     }
 
     @Test
-    public void isNotSumTest2() {
+    public void emptyArrayTest() {
         int x = 0;
         int[] numbers = {};
 
@@ -68,7 +68,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void isNotSumTest3() {
+    public void oneElementInArrayTest() {
         int x = 42;
         int[] numbers = {42};
 
@@ -76,7 +76,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void isNotSumTest4() {
+    public void addingTwoValuesNotGivingSumTest() {
         int x = 0;
         int[] numbers = {12, -8};
 
@@ -84,7 +84,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void isNotSumTest5() {
+    public void addingValuesWhereOneElementIsSumTest() {
         int x = 2012;
         int[] numbers = {2012, -1, 1};
 
@@ -92,7 +92,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void isNotSumTest6() {
+    public void addingVisuallySimilarValuesTest() {
         int x = -77;
         int[] numbers = {-7, 7, -7};
 
@@ -100,7 +100,7 @@ public class SumCheckerTest {
     }
 
     @Test
-    public void isNotSumTest7() {
+    public void needThreeValuesToGetSumTest() {
         int x = 264;
         int[] numbers = {6, 4, 2, 200, 60};
 
@@ -110,7 +110,7 @@ public class SumCheckerTest {
     @Test
     @Disabled("handling overflow and underflow is not implemented in SumChecker")
     @DisplayName("Test checks if method can handle correctly underflow")
-    public void shouldProperlyHandleUnderflowAndFail() {
+    public void handlingProperlyUnderflowTest() {
         int x = 2147483647;
         int[] numbers = {-2147483648, -1, 0};
 
