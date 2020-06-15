@@ -16,7 +16,6 @@ public class StringConverter {
      */
     public String convertListToSingleString(List<String> elements) {
         StringBuilder builder = new StringBuilder();
-        String result = "";
 
         if (elements == null) {
             throw new IllegalArgumentException("The List cannot be null");
@@ -25,8 +24,8 @@ public class StringConverter {
             if (element == null) {
                 continue;
             }
-            result = builder.append(element).toString();
+            builder.append(element);
         }
-        return result;
+        return builder.toString();
     }
 }
